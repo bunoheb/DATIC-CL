@@ -41,8 +41,11 @@ Note: requirements.txt does not include the torch and torchvision lines by defau
 ## Dataset
 
 This project uses the RVL-CDIP dataset.
+The RVL-CDIP dataset is publicly available at:
+https://www.cs.cmu.edu/~aharley/rvl-cdip/
+
 Main experiments: 100,000 sampled images with difficulty scores  
-→ `ref/data\\\_with\\\_combined\\\_difficulty.csv` (included in supplementary material)
+→ `ref/data\\\_with\\\_combined\\\_difficulty.csv`
 Quick testing: 160-sample lightweight CSV  
 → `data/data\\\_with\\\_combined\\\_difficulty.csv` (used by default)
 You can also load RVL-CDIP directly from Hugging Face:  
@@ -61,7 +64,6 @@ project_root/
 ├── train_PreCL.py             # Predefined curriculum (step, linear, root)
 ├── train_AutoCL.py            # Auto curriculum (SPL, ACL)
 ├── evaluate_compare.py        # Evaluation script for all methods
-│
 ├── curriculum/                # Core library implementation for curriculum strategies
 │   ├── datasets/		# Dataset loaders
 │   │   ├── init.py
@@ -86,14 +88,14 @@ project_root/
 │       ├── init.py
 │       ├── log.p
 │       └── rand.py
-│
 ├── data/
 │   └── data_with_combined_difficulty.csv     # 160-sample version for quick reproduction
-│
+├── data_samples/			 # 160-samples
+├── ref/
+│   └── data_with_combined_difficulty.csv     # for 100k sampled data
 ├── results/                 # Evaluation outputs
 ├── runs/                    # Training logs and model checkpoints
 ├── temps/                   # Temporary files (replay buffer, metadata, etc.)
-│
 ├── preprocessing.py         # Tool to compute difficulty scores and generate dataset
 ├── README.md                # Main documentation
 └── requirements.txt         # Python dependencies
