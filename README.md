@@ -1,20 +1,25 @@
-DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning
 Official implementation of the paper:
-"DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning"
+## "DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning"
 
 This repository provides a unified framework for curriculum learning strategies in document image classification:
 Base (no curriculum)
 PreCL (predefined schedules: step, linear, root)
 AutoCL (dynamic difficulty measurer and schedules: ACL, SPL)
 All methods share a common data loader, backbone networks, and trainer implementation (curriculum/algorithms).
+
 ---
-Experimental Environment
+
+## Experimental Environment
+
 All experiments in the paper were conducted on the following hardware and software setup:
 Hardware: Windows 11 Home (64-bit), NVIDIA RTX 3090 GPU, AMD Ryzen 7 7800X3D 8-Core CPU (4.20 GHz), 32 GB RAM
 Software: Python 3.9.18, PyTorch 2.5.1+cu121, CUDA 12.1
 Note: Other platforms (Linux, macOS) are supported as long as the dependencies are satisfied.
+
 ---
-Installation
+
+## Installation
+
 Using Conda (recommended)
 ```
 conda create -n datic-cl python=3.9 -y
@@ -26,11 +31,15 @@ For CUDA 12.1, install PyTorch as follows:
 ```
 pip install torch==2.5.1+cu121 torchvision==0.16.1+cu121 --index-url https://download.pytorch.org/whl/cu121
 ```
+
 If using a different CUDA version, adjust the version and index URL accordingly. See:
 https://pytorch.org/get-started/locally/
 Note: requirements.txt does not include the torch and torchvision lines by default, because they vary by CUDA version. Instead, they are installed separately as shown above.
+
 ---
-Dataset
+
+## Dataset
+
 This project uses the RVL-CDIP dataset.
 Main experiments: 100,000 sampled images with difficulty scores  
 → `ref/data\\\_with\\\_combined\\\_difficulty.csv` (included in supplementary material)
@@ -41,8 +50,12 @@ https://huggingface.co/datasets/aharley/rvl_cdip
 Once the sampled dataset (e.g., 100K stratified subset) is prepared,
 run `preprocessing.py` to compute difficulty scores and generate the training CSV.
 All training scripts support `--use-huggingface` to bypass local CSVs.
+
 ---
-Directory Structure
+
+## Directory Structure
+
+```
 project_root/
 ├── train_WithoutCL.py         # Base (no curriculum) training (CNN, ResNet34)
 ├── train_PreCL.py             # Predefined curriculum (step, linear, root)
@@ -71,7 +84,7 @@ project_root/
 │   │   └── convnet.py
 │   └── utils/			 # Logging, random seed utils
 │       ├── init.py
-│       ├── log.py
+│       ├── log.p
 │       └── rand.py
 │
 ├── data/
@@ -84,9 +97,14 @@ project_root/
 ├── preprocessing.py         # Tool to compute difficulty scores and generate dataset
 ├── README.md                # Main documentation
 └── requirements.txt         # Python dependencies
+```
+
 This structure supports modular training and evaluation of multiple curriculum learning strategies for document image classification.
+
 ---
-.gitignore (Optional but Recommended)
+
+## .gitignore (Optional but Recommended)
+
 To keep your repository clean and focused, you may want to ignore the following files:
 Python artifacts
 pycache/
@@ -102,8 +120,10 @@ temps/
 *.xlsx
 OS metadata
 .DS_Store
+
 ---
-Example Commands
+
+## Example Commands
 Below are example commands to run each curriculum strategy. All scripts support common arguments such as --seed, --backbone, and --use-huggingface.
 Preprocessing:
 ```
@@ -133,16 +153,20 @@ You can also manually evaluate saved models (e.g., from ref/ref_models/):
 python evaluate\\\_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --latest-only --which best --manifest "ref/ref\\\_models.csv"
 ```
 This is useful for verifying results without requiring retraining.
+
 ---
-Environment
+
+## Environment
 matplotlib==3.6.3  
 numpy==1.24.0  
 pandas==1.5.3  
 scikit-learn==1.1.3  
 torch==2.5.1+cu121  
 torchvision==0.16.1+cu121
+
 ---
-Acknowledgements
+
+## Acknowledgements
 This project extends and builds upon the CurML library. CurML provided the foundational curriculum learning framework, which was adapted and expanded for textual image classification tasks in this project.
 If you find the original CurML code helpful, please cite the following paper:
 @inproceedings{zhou2022curml,
@@ -152,7 +176,9 @@ booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
 pages={7359--7363},
 year={2022}
 }
+
 ---
-Supplementary Material
+
+## Supplementary Material
 Full training code and a lightweight dataset are included in this repository.
 Pretrained models will be made available after the review process.
