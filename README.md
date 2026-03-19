@@ -16,9 +16,7 @@ All methods share a common data loader, backbone networks, and trainer implement
 All experiments in the paper were conducted on the following hardware and software setup:
 
 - Hardware: Windows 11 Home (64-bit), NVIDIA RTX 3090 GPU, AMD Ryzen 7 7800X3D 8-Core CPU (4.20 GHz), 32 GB RAM
-  
 - Software: Python 3.9.18, PyTorch 2.5.1+cu121, CUDA 12.1
-
 - Note: Other platforms (Linux, macOS) are supported as long as the dependencies are satisfied.
 
 ---
@@ -39,24 +37,28 @@ pip install torch==2.5.1+cu121 torchvision==0.16.1+cu121 --index-url https://dow
 
 If using a different CUDA version, adjust the version and index URL accordingly. See:
 https://pytorch.org/get-started/locally/
-Note: requirements.txt does not include the torch and torchvision lines by default, because they vary by CUDA version. Instead, they are installed separately as shown above.
+- Note: requirements.txt does not include the torch and torchvision lines by default, because they vary by CUDA version. Instead, they are installed separately as shown above.
 
 ---
 
 ## Dataset
 
 This project uses the RVL-CDIP dataset.
+
 The RVL-CDIP dataset is publicly available at:
 https://www.cs.cmu.edu/~aharley/rvl-cdip/
 
 Main experiments: 100,000 sampled images with difficulty scores  
 → `ref/data\\\_with\\\_combined\\\_difficulty.csv`
+
 Quick testing: 160-sample lightweight CSV  
 → `data/data\\\_with\\\_combined\\\_difficulty.csv` (used by default)
+
 You can also load RVL-CDIP directly from Hugging Face:  
 https://huggingface.co/datasets/aharley/rvl_cdip
-Once the sampled dataset (e.g., 100K stratified subset) is prepared,
-run `preprocessing.py` to compute difficulty scores and generate the training CSV.
+
+Once the sampled dataset (e.g., 100K stratified subset) is prepared, run `preprocessing.py` to compute difficulty scores and generate the training CSV.
+
 All training scripts support `--use-huggingface` to bypass local CSVs.
 
 ---
@@ -113,19 +115,32 @@ This structure supports modular training and evaluation of multiple curriculum l
 ## .gitignore (Optional but Recommended)
 
 To keep your repository clean and focused, you may want to ignore the following files:
-Python artifacts
+- Python artifacts
+
 pycache/
+
 *.py[cod]
+  
 *.ipynb_checkpoints/
-Data and logs
+
+- Data and logs
+
 runs/
+
 results/
+
 temps/
+
 *.log
+
 *.pth
+
 *.csv
+
 *.xlsx
-OS metadata
+
+- OS metadata
+
 .DS_Store
 
 ---
@@ -164,28 +179,32 @@ This is useful for verifying results without requiring retraining.
 ---
 
 ## Environment
-matplotlib==3.6.3  
-numpy==1.24.0  
-pandas==1.5.3  
-scikit-learn==1.1.3  
-torch==2.5.1+cu121  
-torchvision==0.16.1+cu121
+- matplotlib==3.6.3  
+- numpy==1.24.0  
+- pandas==1.5.3  
+- scikit-learn==1.1.3  
+- torch==2.5.1+cu121  
+- torchvision==0.16.1+cu121
 
 ---
 
 ## Acknowledgements
 This project extends and builds upon the CurML library. CurML provided the foundational curriculum learning framework, which was adapted and expanded for textual image classification tasks in this project.
+
 If you find the original CurML code helpful, please cite the following paper:
+
+```
 @inproceedings{zhou2022curml,
-title={CurML: A Curriculum Machine Learning Library},
-author={Zhou, Yuwei and Chen, Hong and Pan, Zirui and Yan, Chuanhao and Lin, Fanqi and Wang, Xin and Zhu, Wenwu},
-booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
-pages={7359--7363},
-year={2022}
+    title={CurML: A Curriculum Machine Learning Library},
+    author={Zhou, Yuwei and Chen, Hong and Pan, Zirui and Yan, Chuanhao and Lin, Fanqi and Wang, Xin and Zhu, Wenwu},
+    booktitle={Proceedings of the 30th ACM International Conference on Multimedia},
+    pages={7359--7363},
+    year={2022}
 }
+```
 
 ---
 
 ## Supplementary Material
-Full training code and a lightweight dataset are included in this repository.
-Pretrained models will be made available after the review process.
+- Full training code and a lightweight dataset are included in this repository.
+- Pretrained models will be made available after the review process.
