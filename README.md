@@ -2,9 +2,11 @@ Official implementation of the paper:
 ## "DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning"
 
 This repository provides a unified framework for curriculum learning strategies in document image classification:
-Base (no curriculum)
-PreCL (predefined schedules: step, linear, root)
-AutoCL (dynamic difficulty measurer and schedules: ACL, SPL)
+
+- Base (no curriculum)
+- PreCL (predefined schedules: step, linear, root)
+- AutoCL (dynamic difficulty measurer and schedules: ACL, SPL)
+
 All methods share a common data loader, backbone networks, and trainer implementation (curriculum/algorithms).
 
 ---
@@ -12,9 +14,12 @@ All methods share a common data loader, backbone networks, and trainer implement
 ## Experimental Environment
 
 All experiments in the paper were conducted on the following hardware and software setup:
-Hardware: Windows 11 Home (64-bit), NVIDIA RTX 3090 GPU, AMD Ryzen 7 7800X3D 8-Core CPU (4.20 GHz), 32 GB RAM
-Software: Python 3.9.18, PyTorch 2.5.1+cu121, CUDA 12.1
-Note: Other platforms (Linux, macOS) are supported as long as the dependencies are satisfied.
+
+- Hardware: Windows 11 Home (64-bit), NVIDIA RTX 3090 GPU, AMD Ryzen 7 7800X3D 8-Core CPU (4.20 GHz), 32 GB RAM
+  
+- Software: Python 3.9.18, PyTorch 2.5.1+cu121, CUDA 12.1
+
+- Note: Other platforms (Linux, macOS) are supported as long as the dependencies are satisfied.
 
 ---
 
