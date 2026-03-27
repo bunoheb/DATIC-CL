@@ -1,7 +1,7 @@
 Official implementation of the paper:
 ## "DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning"
 
-This repository provides a unified framework for curriculum learning strategies in document image classification:
+This repository contains the code used for the experiments reported in the PeerJ Computer Science submission, including preprocessing, baseline training, predefined curriculum learning, and automatic curriculum learning:
 
 - Base (no curriculum)
 - PreCL (predefined schedules: step, linear, root)
@@ -208,3 +208,6 @@ If you find the original CurML code helpful, please cite the following paper:
 ## Supplementary Material
 - Full training code and a lightweight dataset are included in this repository.
 - Pretrained models will be made available after the review process.
+
+## Reproducibility note
+Main paper results were obtained on the 100K sampled subset; the lightweight sample in `data/` or `data_samples/` is provided for quick verification only.
