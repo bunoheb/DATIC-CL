@@ -211,3 +211,19 @@ If you find the original CurML code helpful, please cite the following paper:
 
 ## Reproducibility note
 Main paper results were obtained on the 100K sampled subset; the lightweight sample in `data/` or `data_samples/` is provided for quick verification only.
+
+## Methodology
+The implementation follows the DATIC-CL framework described in the paper. The main steps include:
+
+1. Preprocessing document images (resizing and normalization)
+2. Extracting textual image features (EC, HM, GC, GH)
+3. Computing difficulty scores based on feature ranking and pretrained model predictions
+4. Applying curriculum learning with predefined scheduling functions
+5. Training a CNN classifier using progressively selected samples
+
+## Citation
+If you use this code, please cite:
+DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning
+
+## License
+This project is released under the MIT License.
