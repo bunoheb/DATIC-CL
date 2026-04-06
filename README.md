@@ -209,8 +209,14 @@ If you find the original CurML code helpful, please cite the following paper:
 - Full training code and a lightweight dataset are included in this repository.
 - Pretrained models will be made available after the review process.
 
+
+---
+
 ## Reproducibility note
 Main paper results were obtained on the 100K sampled subset; the lightweight sample in `data/` or `data_samples/` is provided for quick verification only.
+
+
+---
 
 ## Methodology
 The implementation follows the DATIC-CL framework described in the paper. The main steps include:
@@ -221,9 +227,14 @@ The implementation follows the DATIC-CL framework described in the paper. The ma
 4. Applying curriculum learning with predefined scheduling functions
 5. Training a CNN classifier using progressively selected samples
 
+
+---
+
 ## Citation
 If you use this code, please cite:
 DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning
+
+---
 
 ## License
 This project is released under the MIT License.
