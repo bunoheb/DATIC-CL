@@ -266,12 +266,14 @@ The implementation follows the DATIC-CL framework described in the paper. The ma
 
 If you use this code, please cite:
 
+```
 @article{daticcl2026,
   title={DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning},
   author={Kim, Gayoung and Kang, Yuncheol},
   journal={PeerJ Computer Science},
   year={2026}
 }
+```
 
 ---
 
