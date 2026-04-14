@@ -9,6 +9,8 @@ This repository contains the code used for the experiments reported in the PeerJ
 
 All methods share a common data loader, backbone networks, and trainer implementation (curriculum/algorithms).
 
+
+
 ---
 
 ## Experimental Environment
@@ -112,6 +114,20 @@ This structure supports modular training and evaluation of multiple curriculum l
 
 ---
 
+## Code Information
+
+The repository provides implementations of multiple curriculum learning strategies for document image classification:
+
+- `train_WithoutCL.py`: Baseline training without curriculum learning
+- `train_PreCL.py`: Predefined curriculum learning (step, linear, root schedules)
+- `train_AutoCL.py`: Automatic curriculum learning (SPL, ACL)
+- `evaluate_compare.py`: Evaluation and comparison across methods
+- `preprocessing.py`: Computes difficulty scores and prepares training data
+
+All components share a unified training pipeline, including dataset loaders, backbone networks, and training procedures.
+
+---
+
 ## .gitignore (Optional but Recommended)
 
 To keep your repository clean and focused, you may want to ignore the following files:
@@ -145,13 +161,20 @@ temps/
 
 ---
 
-## Example Commands
-Below are example commands to run each curriculum strategy. All scripts support common arguments such as --seed, --backbone, and --use-huggingface.
-Preprocessing:
+## Usage Workflow
+
+To reproduce the main results:
+
+1. Prepare dataset  
+   - Download RVL-CDIP or use Hugging Face loader  
+
+2. Preprocess data
 ```
 python preprocessing.py
 ```
-Training
+
+3. Train model
+
 (1) Run baseline (e.g., convnet):
 ```
 python train\\\_WithoutCL.py --data rvl --net resnet34 --seed 42 --epochs 150 --batch-size 64 --lr 1e-4
@@ -164,17 +187,26 @@ python train\\\_PreCL.py --method PreCL --data rvl --net convnet --seed 42 --epo
 ```
 python train\\\_AutoCL.py --variant SPL --data rvl --net convnet --seed 42 --epochs 150 --batch-size 64 --lr 1e-4 --start-rate 0.5 --grow-epochs 149 --grow-fn linear --weight-fn hard
 ```
-3-1. Evaluate Best Models (Recommended)
+
+4. Evaluate performance
+
+(1) Evaluate Best Models (Recommended)
 To evaluate the best checkpoint from each training run:
 ```
 python evaluate\\\_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --which best --latest-only
 ```
-3-2. Custom Evaluation with Specified Model Files
+(2) Custom Evaluation with Specified Model Files
 You can also manually evaluate saved models (e.g., from ref/ref_models/):
 ```
 python evaluate\\\_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --latest-only --which best --manifest "ref/ref\\\_models.csv"
 ```
-This is useful for verifying results without requiring retraining.
+
+---
+
+## Expected Output
+
+After training, model checkpoints and logs will be saved in the `runs/` directory.
+Evaluation results, including accuracy comparisons across methods, will be stored in the `results/` directory.
 
 ---
 
@@ -231,8 +263,15 @@ The implementation follows the DATIC-CL framework described in the paper. The ma
 ---
 
 ## Citation
+
 If you use this code, please cite:
-DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning
+
+@article{daticcl2026,
+  title={DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning},
+  author={Kim, Gayoung and Kang, Yuncheol},
+  journal={PeerJ Computer Science},
+  year={2026}
+}
 
 ---
 
