@@ -75,42 +75,46 @@ project_root/
 ├── evaluate_compare.py        # Evaluation script for all methods
 ├── curriculum/                # Core library implementation for curriculum strategies
 │   ├── datasets/		# Dataset loaders
-│   │   ├── init.py
+│   │   ├── __init__.py
 │   │   ├── rvlcdip.py
 │   │   ├── custom_dataset.py
 │   │   ├── document_dataset.py
 │   │   └── utils.py
 │   ├── trainers/		 # Classifier trainer
-│   │   ├── init.py
+│   │   ├── __init__.py
 │   │   └── image_classifier.py
 │   ├── algorithms/		# Curriculum algorithm
-│   │   ├── init.py
+│   │   ├── __init__.py
 │   │   ├── base.py
 │   │   ├── predefined.py
 │   │   ├── self_paced.py
 │   │   └── adaptive.py
 │   ├── backbones/			# CNN and ResNet backbones
-│   │   ├── init.py
+│   │   ├── __init__.py
 │   │   ├── resnet.py
 │   │   └── convnet.py
 │   └── utils/			 # Logging, random seed utils
-│       ├── init.py
-│       ├── log.p
+│       ├── __init__.py
+│       ├── log.py
 │       └── rand.py
 ├── data/
-│   └── data_path.csv     # 160-sample version for quick reproduction
+│   └── data_with_combined_difficulty.csv     # 160-sample version for quick reproduction
 ├── data_samples/			 # 160-samples
 ├── ref/
 │   └── data_with_combined_difficulty.csv     # for 100k sampled data
 ├── results/                 # Evaluation outputs
 ├── runs/                    # Training logs and model checkpoints
 ├── temps/                   # Temporary files (replay buffer, metadata, etc.)
+├── figures/                 # Figures used in README
+│   ├── framework_daticcl.png
+│   └── difficulty_measurer.png
 ├── preprocessing.py         # Tool to compute difficulty scores and generate dataset
 ├── README.md                # Main documentation
 └── requirements.txt         # Python dependencies
 ```
 
 This structure supports modular training and evaluation of multiple curriculum learning strategies for document image classification.
+
 
 ---
 
@@ -251,7 +255,16 @@ Main paper results were obtained on the 100K sampled subset; the lightweight sam
 ---
 
 ## Methodology
-The implementation follows the DATIC-CL framework described in the paper. The main steps include:
+
+The implementation follows the DATIC-CL framework described in the paper.
+
+![DATIC-CL Framework Overview](figures/framework_daticcl.png)
+*Figure: Overview of the DATIC-CL framework — Textual Feature-based Difficulty Measurer and Pre-defined Training Scheduler.*
+
+![Difficulty Score Computation](figures/difficulty_measurer.png)
+*Figure: Detailed computation of the difficulty score, combining normalized textual feature scores with model prediction difficulty.*
+
+The main steps include:
 
 1. Preprocessing document images (resizing and normalization)
 2. Extracting textual image features (EC, HM, GC, GH)
