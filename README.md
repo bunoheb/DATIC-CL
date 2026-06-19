@@ -51,10 +51,10 @@ The RVL-CDIP dataset is publicly available at:
 https://www.cs.cmu.edu/~aharley/rvl-cdip/
 
 Main experiments: 100,000 sampled images with difficulty scores  
-→ `ref/data\\\_with\\\_combined\\\_difficulty.csv`
+→ `ref/data_with_combined_difficulty.csv`
 
 Quick testing: 160-sample lightweight CSV  
-→ `data/data\\\_with\\\_combined\\\_difficulty.csv` (used by default)
+→ `data/data_with_combined_difficulty.csv` (used by default)
 
 You can also load RVL-CDIP directly from Hugging Face:  
 https://huggingface.co/datasets/aharley/rvl_cdip
@@ -177,15 +177,15 @@ python preprocessing.py
 
 (1) Run baseline (e.g., convnet):
 ```
-python train\\\_WithoutCL.py --data rvl --net resnet34 --seed 42 --epochs 150 --batch-size 64 --lr 1e-4
+python train_WithoutCL.py --data rvl --net resnet34 --seed 42 --epochs 150 --batch-size 64 --lr 1e-4
 ```
 (2) Run PreCL (e.g., step):
 ```
-python train\\\_PreCL.py --method PreCL --data rvl --net convnet --seed 42 --epochs 150 --batch-size 64 --lr 1e-4 --func-type step --num-steps 50 --epochs-per-step 3
+python train_PreCL.py --method PreCL --data rvl --net convnet --seed 42 --epochs 150 --batch-size 64 --lr 1e-4 --func-type step --num-steps 50 --epochs-per-step 3
 ```
 (3) Run AutoCL (e.g., SPL):
 ```
-python train\\\_AutoCL.py --variant SPL --data rvl --net convnet --seed 42 --epochs 150 --batch-size 64 --lr 1e-4 --start-rate 0.5 --grow-epochs 149 --grow-fn linear --weight-fn hard
+python train_AutoCL.py --variant SPL --data rvl --net convnet --seed 42 --epochs 150 --batch-size 64 --lr 1e-4 --start-rate 0.5 --grow-epochs 149 --grow-fn linear --weight-fn hard
 ```
 
 4. Evaluate performance
@@ -193,12 +193,12 @@ python train\\\_AutoCL.py --variant SPL --data rvl --net convnet --seed 42 --epo
 (1) Evaluate Best Models (Recommended)
 To evaluate the best checkpoint from each training run:
 ```
-python evaluate\\\_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --which best --latest-only
+python evaluate_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --which best --latest-only
 ```
 (2) Custom Evaluation with Specified Model Files
 You can also manually evaluate saved models (e.g., from ref/ref_models/):
 ```
-python evaluate\\\_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --latest-only --which best --manifest "ref/ref\\\_models.csv"
+python evaluate_compare.py --root runs --method-filter Base,PreCL,AutoCL --data-filter rvl --latest-only --which best --manifest "ref/ref_models.csv"
 ```
 
 ---
@@ -266,11 +266,11 @@ The implementation follows the DATIC-CL framework described in the paper. The ma
 
 If you use this code, please cite:
 
-```
-@article{daticcl2026,
+```bibtex
+@inproceedings{daticcl2026,
   title={DATIC-CL: Difficulty-Aware Textual Image Classification with Curriculum Learning},
   author={Kim, Gayoung and Kang, Yuncheol},
-  journal={PeerJ Computer Science},
+  booktitle={},  % to be updated upon acceptance
   year={2026}
 }
 ```
