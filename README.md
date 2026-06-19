@@ -98,7 +98,7 @@ project_root/
 │       ├── log.p
 │       └── rand.py
 ├── data/
-│   └── data_with_combined_difficulty.csv     # 160-sample version for quick reproduction
+│   └── data_path.csv     # 160-sample version for quick reproduction
 ├── data_samples/			 # 160-samples
 ├── ref/
 │   └── data_with_combined_difficulty.csv     # for 100k sampled data
